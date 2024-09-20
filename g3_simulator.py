@@ -40,7 +40,9 @@ def make_data_frame(frame_num, board_id, agg_time=2.0, t_samp=1.0/488.0, n_chs=2
     endings = ["_I","_Q"]
     chs = [ch_name+ending for ch_name in ch_names for ending in endings]
 
-    data = (np.random.normal(size=(len(chs),len(times))) * 100).astype(dtype)
+
+    # generate gaussian with mean ~1e7, and std ~2000
+    data = (np.random.normal(scale=2000, size=(len(chs),len(times)))).astype(dtype)
     
     ts = so3g.G3SuperTimestream()
     ts.names = chs
