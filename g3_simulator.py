@@ -52,6 +52,7 @@ def make_data_frame(frame_num, board_id, agg_time=2.0, t_samp=1.0/488.0, n_chs=2
         ts.quanta = quanta * np.ones(len(chs)) # this is related to the data level to keep for the float under compression
     
     ts.data = data
+    print(data.shape)
     
     frame = core.G3Frame(core.G3FrameType.Scan)
     frame['time'] = core.G3Time((start_time+agg_time) * core.G3Units.s).time
